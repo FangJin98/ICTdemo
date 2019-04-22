@@ -11,9 +11,10 @@ public class test {
 			if(tmp!=0) {
 				int tmpid=sc.nextInt();
 				int weight=sc.nextInt();
-				Task newtask=new Task(tmpid,weight);
+				Task newtask=new Task(solve.getFactory(tmpid),weight);
 				int tmpId=solve.selectVehicle(newtask);
 				System.out.println(tmpId);
+				solve.arrangeTask(solve.getVehicle(tmpId),newtask);
 			}
 			else {
 				System.out.println("!!!");

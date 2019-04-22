@@ -70,7 +70,7 @@ public class Solve {
 		
 		return vId;
 	}
-
+	
 	private void calDisArray() {
 		for(int i=0;i<facNum;i++) {
 			for(int j=0;j<facNum;j++) {
@@ -91,6 +91,17 @@ public class Solve {
 		s = s * 6378.137;
 		return s;
 	}
+	
+	public factory getFactory(int i) {
+		return facList.get(i);
+	}
 
+	public void arrangeTask(vehicle v,Task t) {
+		vManager.arrangeTask(v, t);
+	}
+	
+	public vehicle getVehicle(int i) {
+		return vManager.getVehicle(i);
+	}
 	
 }

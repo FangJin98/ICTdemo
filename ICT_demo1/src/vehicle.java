@@ -79,10 +79,14 @@ public class vehicle {
 
 	public boolean satisfy(Task task) {
 		double tmpDis=Solve.calDis(latitude,longitude,task.getLatitude(),task.getLongitude());
-		int tmpTime=(int) tmpDis/ConstValues.VEHICLE_SPEED;		//粗略预估时间
+		int tmpTime=(int) tmpDis/ConstValues.VEHICLE_SPEED;		//粗略预估时间 路程÷速度
 		if((tmpTime<=task.getTimeLimit())&&(remainCapacity>=task.getWeight())) return true;
 		return false;
 	}
 	
-	
+	public void finishTask(Task t) {
+		remainCapacity+=t.getWeight();
+		isWorking--;
+		taskSerial.remove(t);
+	}
 }

@@ -56,4 +56,21 @@ public class vehicleManager {
 			v.appendTask(t);
 		}
 	}
+	public vehicle getVehicle(int i) {
+		for(vehicle v:noWorkVehicles) {
+			if(v.getId()==i) return v;
+		}
+		for (vehicle v:inWorkingVehicles) {
+			if(v.getId()==i) return v;
+		}
+		return null;
+	}
+	
+	public void finishTask(vehicle v,Task t) {
+		v.finishTask(t);
+		if(v.getIsWorking()==0) {		//任务数为0的车即可被优先考虑，不需要回基地
+			inWorkingVehicles.remove(v);
+			noWorkVehicles.add(v);
+		}
+	}
 }
